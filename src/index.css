@@ -44,7 +44,7 @@
 }
 
 /* ------------------------
-   🌀 Animación de Carrusel de Íconos
+   🌀 Animación Carrusel de Íconos
 ------------------------- */
 @layer utilities {
   .animate-slide-icons {
@@ -68,7 +68,7 @@
 }
 
 /* ------------------------
-   💬 Animación Chatbot Bounce
+   💬 Chatbot Bounce Animado
 ------------------------- */
 @keyframes chatbotBounce {
   0% {
@@ -95,11 +95,11 @@
    🖼️ Scrollbar Oculta
 ------------------------- */
 .scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome, Safari */
 }
 
 /* ------------------------
@@ -114,7 +114,7 @@
 }
 
 /* ------------------------
-   🎞️ Slider Vertical Animado (Servicios)
+   🎞️ Slider Vertical Servicios
 ------------------------- */
 .vertical-slider-container {
   height: 320px;
