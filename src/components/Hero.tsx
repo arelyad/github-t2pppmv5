@@ -24,14 +24,14 @@ const Hero = () => {
 
   return (
     <motion.section
-      className="relative bg-white pt-24 pb-20 md:pt-28 md:pb-24 overflow-hidden"
-      initial={{ opacity: 0, y: 50, scale: 0.98 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
+      className="relative bg-white pt-36 pb-28 overflow-hidden"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.2, ease: 'easeOut' }}
       viewport={{ once: true }}
     >
       {/* Carrusel animado */}
-      <div className="overflow-hidden w-full mb-8">
+      <div className="overflow-hidden w-full mb-12">
         <div className="flex gap-16 animate-slide-icons whitespace-nowrap items-center justify-center">
           {[...items, ...items].map((item, index) => (
             <div key={index} className="flex items-center gap-3 min-w-max">
@@ -43,16 +43,16 @@ const Hero = () => {
       </div>
 
       {/* Contenido principal */}
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-10 items-center">
-        {/* 🎥 Video con entrada inteligente */}
+      <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-16 items-center">
+        {/* 🎥 Video */}
         <motion.div
           className="md:col-span-5 flex justify-center"
-          initial={{ opacity: 0, y: 40, x: -40, scale: 0.9 }}
-          whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <div className="rounded-2xl overflow-hidden shadow-xl w-full max-w-[340px] aspect-[4/3]">
+          <div className="rounded-2xl overflow-hidden shadow-xl w-full max-w-[380px] aspect-[4/3]">
             <video
               src="/VideoAthenIA_Hero.mp4"
               autoPlay
@@ -64,21 +64,21 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* 🧠 Texto con entrada inteligente */}
+        {/* 🧠 Texto */}
         <motion.div
-          className="md:col-span-7 flex flex-col items-center justify-center text-center"
-          initial={{ opacity: 0, y: 40, x: 40, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-          transition={{ duration: 1.2, ease: 'easeOut', delay: 0.2 }}
+          className="md:col-span-7 flex flex-col justify-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <div className="bg-athenia-50 p-5 rounded-xl shadow-sm mb-6 max-w-xl">
+          <div className="bg-athenia-50 p-6 rounded-xl shadow-sm text-center mb-8">
             <p className="text-athenia-400 text-lg md:text-xl">
               En <strong>AthenIA</strong>, llevamos la inteligencia artificial a tu alcance, sin complicaciones.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-4 text-sm max-w-3xl text-left">
+          <div className="grid sm:grid-cols-3 gap-6 text-sm mb-8">
             <div className="border-l-4 border-[#4BA3C7] pl-3">
               <h3 className="font-semibold text-athenia-400 mb-1">Accesibilidad Universal</h3>
               <p className="text-athenia-300/90 text-justify">
@@ -100,7 +100,7 @@ const Hero = () => {
           </div>
 
           {/* Botones */}
-          <div className="flex flex-wrap gap-4 justify-center mt-8">
+          <div className="flex flex-wrap gap-4 justify-center md:justify-start">
             <motion.a
               href="#demo"
               whileHover={{ scale: 1.05 }}
@@ -120,7 +120,7 @@ const Hero = () => {
       </div>
 
       {/* Chatbot ElevenLabs */}
-      <div className="fixed bottom-0.5 right-2 z-50 animate-bounce scale-[0.75]">
+      <div className="fixed bottom-1 right-2 z-50 animate-bounce scale-[0.75]">
         <elevenlabs-convai agent-id="RSdNio7xDV4EO2kveC06"></elevenlabs-convai>
       </div>
     </motion.section>
@@ -128,3 +128,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
