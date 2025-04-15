@@ -73,7 +73,7 @@ const Hero = () => {
         >
           <div className="transition-all duration-300 ease-in-out hover:scale-[1.015] mx-auto md:mx-0">
             <p className="text-athenia-400 text-lg md:text-xl text-center mb-6 bg-gradient-to-r from-white to-athenia-50 p-4 rounded-md shadow-sm">
-              En <strong>AthenIA</strong>, llevamos la inteligencia artificial a tu alcance, sin complicaciones.
+              En <strong>AthenAI</strong>, llevamos la inteligencia artificial a tu alcance, sin complicaciones.
             </p>
           </div>
 
