@@ -39,7 +39,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section className="relative bg-gradient-to-b from-[#E3F2FD] to-white py-24 px-4 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-[#e3edf5] to-white py-24 px-4 overflow-hidden">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-athenia-400 mb-6">
           Nuestros Servicios
@@ -66,12 +66,10 @@ const Services = () => {
                 playsInline
                 className="w-full h-full object-cover"
               />
-              {/* ✅ Overlay oscuro encima del video */}
               <div className="absolute inset-0 bg-black/40" />
             </motion.div>
           </AnimatePresence>
 
-          {/* ✅ Texto encima del overlay con sombra */}
           <motion.div
             key={slides[current].title}
             initial={{ opacity: 0, y: 40 }}
