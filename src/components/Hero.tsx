@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-// Íconos
 import iconoMarketing from '../assets/icono-marketing.jpg';
 import iconoSoluciones from '../assets/icono-soluciones.jpg';
 import iconoChatbot from '../assets/icono-chatbot.jpg';
@@ -24,15 +23,14 @@ const Hero = () => {
 
   return (
     <motion.section
-      className="relative bg-white pt-36 pb-28 overflow-hidden"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.2, ease: 'easeOut' }}
-      viewport={{ once: true }}
+      className="relative bg-white pt-24 pb-28 md:pt-28 md:pb-32 overflow-hidden"
+      initial={{ opacity: 0, y: 50, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 1, ease: 'easeOut' }}
     >
-      {/* Carrusel animado */}
-      <div className="overflow-hidden w-full mb-12">
-        <div className="flex gap-16 animate-slide-icons whitespace-nowrap items-center justify-center">
+      {/* 🌀 Carrusel horizontal superior */}
+      <div className="overflow-hidden w-full mb-10">
+        <div className="flex gap-16 animate-slide-infinite whitespace-nowrap items-center justify-center">
           {[...items, ...items].map((item, index) => (
             <div key={index} className="flex items-center gap-3 min-w-max">
               <img src={item.icon} alt="icono" className="h-6 w-auto" />
@@ -42,17 +40,17 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Contenido principal */}
-      <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-16 items-center">
+      {/* 📦 Contenido principal */}
+      <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-12 items-center min-h-[480px]">
         {/* 🎥 Video */}
         <motion.div
           className="md:col-span-5 flex justify-center"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <div className="rounded-2xl overflow-hidden shadow-xl w-full max-w-[380px] aspect-[4/3]">
+          <div className="rounded-2xl overflow-hidden shadow-subtle w-full max-w-[360px] aspect-[4/3]">
             <video
               src="/VideoAthenIA_Hero.mp4"
               autoPlay
@@ -64,21 +62,17 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* 🧠 Texto */}
+        {/* 🧠 Texto y botones */}
         <motion.div
-          className="md:col-span-7 flex flex-col justify-center"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          viewport={{ once: true }}
+          className="md:col-span-7 flex flex-col justify-center items-center md:items-start animate-fade-up"
         >
-          <div className="bg-athenia-50 p-6 rounded-xl shadow-sm text-center mb-8">
+          <div className="bg-athenia-50 p-5 rounded-xl shadow-sm text-center md:text-left mb-6 max-w-xl">
             <p className="text-athenia-400 text-lg md:text-xl">
               En <strong>AthenIA</strong>, llevamos la inteligencia artificial a tu alcance, sin complicaciones.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-6 text-sm mb-8">
+          <div className="grid sm:grid-cols-3 gap-4 text-sm mb-6 max-w-xl">
             <div className="border-l-4 border-[#4BA3C7] pl-3">
               <h3 className="font-semibold text-athenia-400 mb-1">Accesibilidad Universal</h3>
               <p className="text-athenia-300/90 text-justify">
@@ -99,8 +93,8 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Botones */}
-          <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+          {/* Botones CTA */}
+          <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-2">
             <motion.a
               href="#demo"
               whileHover={{ scale: 1.05 }}
@@ -119,9 +113,9 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Chatbot ElevenLabs */}
-      <div className="fixed bottom-1 right-2 z-50 animate-bounce scale-[0.75]">
-        <elevenlabs-convai agent-id="RSdNio7xDV4EO2kveC06"></elevenlabs-convai>
+      {/* 🤖 Chatbot ElevenLabs */}
+      <div className="fixed bottom-1.5 right-2 z-50 chatbot-animate scale-[0.75]">
+        <elevenlabs-convai agent-id="RSdNio7xDV4EO2kveC06" />
       </div>
     </motion.section>
   );
@@ -129,3 +123,4 @@ const Hero = () => {
 
 export default Hero;
 
+             
