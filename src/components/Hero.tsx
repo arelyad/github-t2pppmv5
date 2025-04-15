@@ -17,9 +17,9 @@ const Hero = () => {
 
   return (
     <section className="relative bg-white pt-28 pb-32 md:pt-32 md:pb-40">
-      {/* Carrusel de íconos */}
+      {/* ✅ Carrusel de íconos fluido */}
       <div className="-mt-4 mb-6 overflow-hidden w-full">
-        <div className="animate-slide-icons flex whitespace-nowrap gap-16 items-center justify-center">
+        <div className="flex gap-16 items-center justify-center whitespace-nowrap animate-slide-infinite w-max">
           {[...Array(2)].map((_, i) => (
             <React.Fragment key={i}>
               <div className="flex items-center gap-3 min-w-max transform transition-transform duration-300 hover:scale-110">
@@ -54,7 +54,7 @@ const Hero = () => {
         >
           <div className="rounded-2xl overflow-hidden shadow-xl w-full max-w-md aspect-[4/3] mx-auto">
             <video
-              src="/VideoAthenIA_Hero.mp4" // ✅ Ruta corregida
+              src="/VideoAthenIA_Hero.mp4"
               autoPlay
               muted
               loop
