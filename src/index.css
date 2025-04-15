@@ -1,0 +1,157 @@
+/* ------------------------
+   🎨 Fuentes Montserrat
+------------------------- */
+@import '@fontsource/montserrat/300.css';
+@import '@fontsource/montserrat/400.css';
+@import '@fontsource/montserrat/500.css';
+@import '@fontsource/montserrat/600.css';
+@import '@fontsource/montserrat/700.css';
+@import '@fontsource/montserrat/800.css';
+
+/* ------------------------
+   ⚙️ Tailwind
+------------------------- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------
+   🌐 Estilos Base
+------------------------- */
+@layer base {
+  html {
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    overflow-x: hidden;
+  }
+
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ------------------------
+   🌀 Animación de Carrusel de Íconos
+------------------------- */
+@layer utilities {
+  .animate-slide-icons {
+    display: flex;
+    animation: slideIcons 10s linear infinite;
+    will-change: transform;
+  }
+
+  .animate-slide-icons:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes slideIcons {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* ------------------------
+   💬 Animación Chatbot Bounce
+------------------------- */
+@keyframes chatbotBounce {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.chatbot-animate {
+  animation: chatbotBounce 0.8s ease-out;
+}
+
+/* ------------------------
+   🖼️ Scrollbar Oculta
+------------------------- */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ------------------------
+   ✨ Typewriter Soporte
+------------------------- */
+.typewriter-text {
+  font-family: inherit;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* ------------------------
+   🎞️ Slider Vertical Animado (Servicios)
+------------------------- */
+.vertical-slider-container {
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+}
+
+.vertical-slider-track {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.6s ease-in-out;
+}
+
+.vertical-slide {
+  flex-shrink: 0;
+  height: 320px;
+}
+
+/* ------------------------
+   🧾 Texto sincronizado con slider
+------------------------- */
+.service-caption {
+  @apply text-base md:text-lg text-athenia-300 font-medium text-center mt-4 transition-opacity duration-500;
+}
+
+/* ------------------------
+   🎥 Soporte para videos
+------------------------- */
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
