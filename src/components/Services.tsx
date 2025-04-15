@@ -28,8 +28,8 @@ const slides = [
 const Services = () => {
   const [current, setCurrent] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const duration = 8000;
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const duration = 8000;
 
   const resetTimeout = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -38,7 +38,7 @@ const Services = () => {
       setTimeout(() => {
         setCurrent((prev) => (prev + 1) % slides.length);
         setIsTransitioning(false);
-      }, 600); // Duración de cortina
+      }, 1200); // Cortina más suave
     }, duration);
   };
 
@@ -47,24 +47,19 @@ const Services = () => {
     return () => clearTimeout(timeoutRef.current!);
   }, [current]);
 
-  const nextSlide = () => {
+  const changeSlide = (index: number) => {
     setIsTransitioning(true);
     setTimeout(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
+      setCurrent(index);
       setIsTransitioning(false);
-    }, 600);
+    }, 1200);
   };
 
-  const prevSlide = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-      setIsTransitioning(false);
-    }, 600);
-  };
+  const nextSlide = () => changeSlide((current + 1) % slides.length);
+  const prevSlide = () => changeSlide((current - 1 + slides.length) % slides.length);
 
   return (
-    <section className="relative bg-gradient-to-b from-[#e3edf5] to-white py-24 px-4 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-[#e3edf5] to-white py-20 px-4 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -72,6 +67,7 @@ const Services = () => {
         viewport={{ once: true }}
         className="max-w-5xl mx-auto text-center"
       >
+        {/* Título */}
         <motion.h2
           whileHover={{ scale: 1.02, textShadow: '0 0 10px rgba(64,102,131,0.3)' }}
           className="text-3xl md:text-4xl font-bold text-athenia-400 mb-6 transition-all"
@@ -79,6 +75,7 @@ const Services = () => {
           Nuestros Servicios
         </motion.h2>
 
+        {/* Subtítulo con typing */}
         <motion.p
           whileHover={{ scale: 1.01, color: '#406683' }}
           transition={{ duration: 0.3 }}
@@ -93,9 +90,9 @@ const Services = () => {
           />
         </motion.p>
 
-        {/* 🎥 Slider con efecto de cortina */}
-        <div className="relative h-[300px] md:h-[380px] lg:h-[420px] rounded-2xl overflow-hidden shadow-xl bg-black">
-          {/* Botón izquierdo */}
+        {/* Slider */}
+        <div className="relative h-[240px] md:h-[320px] lg:h-[360px] rounded-2xl overflow-hidden shadow-xl bg-black transition-all duration-500">
+          {/* Botón Izquierda */}
           <motion.button
             onClick={prevSlide}
             className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/20 text-white p-2 rounded-full backdrop-blur-sm shadow-md"
@@ -106,7 +103,7 @@ const Services = () => {
             </svg>
           </motion.button>
 
-          {/* Botón derecho */}
+          {/* Botón Derecha */}
           <motion.button
             onClick={nextSlide}
             className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/20 text-white p-2 rounded-full backdrop-blur-sm shadow-md"
@@ -117,19 +114,19 @@ const Services = () => {
             </svg>
           </motion.button>
 
-          {/* Cortina animada */}
+          {/* Cortina de transición */}
           {isTransitioning && (
             <motion.div
               initial={{ width: '0%' }}
               animate={{ width: '100%' }}
               exit={{ width: '0%' }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 1.2, ease: 'easeInOut' }}
               className="absolute top-0 left-0 h-full bg-athenia-400 z-30"
             />
           )}
 
-          {/* Video */}
-          <div className="absolute top-0 left-0 w-full h-full z-10">
+          {/* Video Slide */}
+          <div className="absolute top-0 left-0 w-full h-full z-10 transition-all duration-500">
             <video
               key={slides[current].video}
               src={slides[current].video}
@@ -142,7 +139,7 @@ const Services = () => {
             <div className="absolute inset-0 bg-black/40" />
           </div>
 
-          {/* Texto */}
+          {/* Texto del Slide */}
           <motion.div
             key={slides[current].title}
             initial={{ opacity: 0, y: 30 }}
@@ -159,7 +156,7 @@ const Services = () => {
           </motion.div>
         </div>
 
-        {/* Barras de progreso */}
+        {/* Progreso */}
         <div className="flex justify-center gap-3 mt-6">
           {slides.map((_, i) => (
             <div key={i} className="relative w-16 h-1 bg-athenia-100 overflow-hidden rounded-full">
@@ -175,11 +172,10 @@ const Services = () => {
           ))}
         </div>
 
-        {/* CTA */}
+        {/* CTA final */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-10"
         >
