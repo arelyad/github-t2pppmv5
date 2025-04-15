@@ -16,8 +16,14 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative bg-white pt-28 pb-32 md:pt-32 md:pb-40 overflow-hidden">
-      {/* Carrusel de íconos IA (más suave y continuo) */}
+    <motion.section
+      className="relative bg-white pt-28 pb-32 md:pt-32 md:pb-40 overflow-hidden"
+      initial={{ opacity: 0, y: 50, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      viewport={{ once: true }}
+    >
+      {/* Carrusel superior */}
       <div className="overflow-hidden w-full mb-10">
         <div className="flex gap-16 animate-marquee whitespace-nowrap items-center justify-center">
           <div className="flex items-center gap-3 min-w-max">
@@ -39,14 +45,15 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Contenido principal */}
+      {/* Contenido */}
       <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-12 items-start">
-        {/* 🎥 Video principal */}
+        {/* Video */}
         <motion.div
           className="md:col-span-5"
           initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
+          viewport={{ once: true }}
         >
           <div className="rounded-2xl overflow-hidden shadow-xl w-full max-w-[480px] aspect-[4/3] mx-auto">
             <video
@@ -60,12 +67,13 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Texto derecho */}
+        {/* Texto */}
         <motion.div
           className="md:col-span-7 flex flex-col justify-center"
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
+          viewport={{ once: true }}
         >
           <div className="bg-athenia-50 p-5 rounded-xl shadow-sm text-center mb-6">
             <p className="text-athenia-400 text-lg md:text-xl">
@@ -107,11 +115,11 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Chatbot */}
+      {/* Chatbot ElevenLabs */}
       <div className="fixed bottom-0.5 right-2 z-50 animate-bounce scale-[0.75]">
         <elevenlabs-convai agent-id="RSdNio7xDV4EO2kveC06"></elevenlabs-convai>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
