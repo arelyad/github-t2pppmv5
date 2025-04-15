@@ -39,7 +39,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section className="relative bg-athenia-50 py-24 px-4 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-[#E3F2FD] to-white py-24 px-4 overflow-hidden">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-athenia-400 mb-6">
           Nuestros Servicios
