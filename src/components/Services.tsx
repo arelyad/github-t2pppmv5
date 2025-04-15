@@ -29,11 +29,16 @@ const Services = () => {
   const [current, setCurrent] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const duration = 8000;
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const resetTimeout = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % slides.length);
+        setIsTransitioning(false);
+      }, 600); // Duración de cortina
     }, duration);
   };
 
@@ -42,8 +47,21 @@ const Services = () => {
     return () => clearTimeout(timeoutRef.current!);
   }, [current]);
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
-  const prevSlide = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  const nextSlide = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+      setIsTransitioning(false);
+    }, 600);
+  };
+
+  const prevSlide = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+      setIsTransitioning(false);
+    }, 600);
+  };
 
   return (
     <section className="relative bg-gradient-to-b from-[#e3edf5] to-white py-24 px-4 overflow-hidden">
@@ -54,7 +72,6 @@ const Services = () => {
         viewport={{ once: true }}
         className="max-w-5xl mx-auto text-center"
       >
-        {/* Título con hover + typing */}
         <motion.h2
           whileHover={{ scale: 1.02, textShadow: '0 0 10px rgba(64,102,131,0.3)' }}
           className="text-3xl md:text-4xl font-bold text-athenia-400 mb-6 transition-all"
@@ -76,9 +93,8 @@ const Services = () => {
           />
         </motion.p>
 
-        {/* Slider de video sin animaciones de transición */}
+        {/* 🎥 Slider con efecto de cortina */}
         <div className="relative h-[300px] md:h-[380px] lg:h-[420px] rounded-2xl overflow-hidden shadow-xl bg-black">
-
           {/* Botón izquierdo */}
           <motion.button
             onClick={prevSlide}
@@ -101,9 +117,21 @@ const Services = () => {
             </svg>
           </motion.button>
 
-          {/* 🎥 Video directamente reemplazado */}
-          <div className="absolute top-0 left-0 w-full h-full z-0">
+          {/* Cortina animada */}
+          {isTransitioning && (
+            <motion.div
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              exit={{ width: '0%' }}
+              transition={{ duration: 0.3 }}
+              className="absolute top-0 left-0 h-full bg-athenia-400 z-30"
+            />
+          )}
+
+          {/* Video */}
+          <div className="absolute top-0 left-0 w-full h-full z-10">
             <video
+              key={slides[current].video}
               src={slides[current].video}
               autoPlay
               muted
@@ -114,13 +142,13 @@ const Services = () => {
             <div className="absolute inset-0 bg-black/40" />
           </div>
 
-          {/* Texto encima del video */}
+          {/* Texto */}
           <motion.div
             key={slides[current].title}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="absolute bottom-6 left-6 right-6 text-left z-10"
+            className="absolute bottom-6 left-6 right-6 text-left z-20"
           >
             <h3 className="text-white text-xl md:text-2xl font-semibold drop-shadow-md">
               {slides[current].title}
@@ -147,7 +175,7 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Botón CTA */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
