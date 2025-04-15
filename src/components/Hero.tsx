@@ -15,6 +15,13 @@ const Hero = () => {
     document.body.appendChild(script);
   }, []);
 
+  const items = [
+    { icon: iconoChatbot, text: 'Chatbots que atienden a tus clientes 24/7' },
+    { icon: iconoCRM, text: 'CRM que aprende de cada interacción' },
+    { icon: iconoMarketing, text: 'Marketing Digital con IA' },
+    { icon: iconoSoluciones, text: 'Soluciones con Inteligencia Artificial' },
+  ];
+
   return (
     <motion.section
       className="relative bg-white pt-28 pb-32 md:pt-32 md:pb-40 overflow-hidden"
@@ -23,31 +30,21 @@ const Hero = () => {
       transition={{ duration: 0.8, ease: 'easeOut' }}
       viewport={{ once: true }}
     >
-      {/* Carrusel superior */}
+      {/* Carrusel animado */}
       <div className="overflow-hidden w-full mb-10">
-        <div className="flex gap-16 animate-marquee whitespace-nowrap items-center justify-center">
-          <div className="flex items-center gap-3 min-w-max">
-            <img src={iconoChatbot} alt="Chatbots" className="h-6 w-auto" />
-            <p className="text-sm text-athenia-400">Chatbots que atienden a tus clientes 24/7</p>
-          </div>
-          <div className="flex items-center gap-3 min-w-max">
-            <img src={iconoCRM} alt="CRM" className="h-6 w-auto" />
-            <p className="text-sm text-athenia-400">CRM que aprende de cada interacción</p>
-          </div>
-          <div className="flex items-center gap-3 min-w-max">
-            <img src={iconoMarketing} alt="Marketing" className="h-6 w-auto" />
-            <p className="text-sm text-athenia-400">Marketing Digital con IA</p>
-          </div>
-          <div className="flex items-center gap-3 min-w-max">
-            <img src={iconoSoluciones} alt="Soluciones" className="h-6 w-auto" />
-            <p className="text-sm text-athenia-400">Soluciones con Inteligencia Artificial</p>
-          </div>
+        <div className="flex gap-16 animate-slide-icons whitespace-nowrap items-center justify-center">
+          {[...items, ...items].map((item, index) => (
+            <div key={index} className="flex items-center gap-3 min-w-max">
+              <img src={item.icon} alt="icono" className="h-6 w-auto" />
+              <p className="text-sm text-athenia-400">{item.text}</p>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Contenido */}
-      <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-12 items-start">
-        {/* Video */}
+      {/* Contenido principal */}
+      <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
+        {/* 🎥 Video */}
         <motion.div
           className="md:col-span-5"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -67,7 +64,7 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Texto */}
+        {/* 🧠 Texto alineado al centro */}
         <motion.div
           className="md:col-span-7 flex flex-col justify-center"
           initial={{ opacity: 0, y: 40 }}
@@ -96,6 +93,7 @@ const Hero = () => {
             </div>
           </div>
 
+          {/* Botones */}
           <div className="flex flex-wrap gap-4 justify-start mt-6">
             <motion.a
               href="#demo"
@@ -115,7 +113,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Chatbot ElevenLabs */}
+      {/* 🧠 Chatbot ElevenLabs */}
       <div className="fixed bottom-0.5 right-2 z-50 animate-bounce scale-[0.75]">
         <elevenlabs-convai agent-id="RSdNio7xDV4EO2kveC06"></elevenlabs-convai>
       </div>
@@ -124,3 +122,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
