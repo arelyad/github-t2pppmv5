@@ -1,9 +1,8 @@
-
-    import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 
-// Íconos SVG estilo AI line
+// Íconos SVG estilo "AI line"
 const svgIcons = [
   (
     <svg className="w-8 h-8 text-athenia-300" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -33,26 +32,22 @@ const svgIcons = [
 const features = [
   {
     title: "Automatización Inteligente",
-    description:
-      "Simplifica tareas repetitivas y optimiza tus procesos con herramientas diseñadas para hacer más en menos tiempo.",
+    description: "Simplifica tareas repetitivas y optimiza tus procesos con herramientas diseñadas para hacer más en menos tiempo.",
     delay: 0,
   },
   {
     title: "Interacción Eficaz",
-    description:
-      "Mejora la comunicación con tus clientes mediante soluciones que hacen cada experiencia más fluida y personalizada.",
+    description: "Mejora la comunicación con tus clientes mediante soluciones que hacen cada experiencia más fluida y personalizada.",
     delay: 0.1,
   },
   {
     title: "Innovación Accesible",
-    description:
-      "Tecnología avanzada disponible para cualquier tipo de negocio, sin complicaciones ni grandes inversiones.",
+    description: "Tecnología avanzada disponible para cualquier tipo de negocio, sin complicaciones ni grandes inversiones.",
     delay: 0.2,
   },
   {
     title: "Escalabilidad sin Límites",
-    description:
-      "Implementa soluciones que crecen contigo, adaptándose a tus necesidades y objetivos a medida que evolucionas.",
+    description: "Implementa soluciones que crecen contigo, adaptándose a tus necesidades y objetivos a medida que evolucionas.",
     delay: 0.3,
   },
 ];
@@ -68,20 +63,22 @@ const Features = () => {
     >
       <div className="max-w-4xl mx-auto px-6 space-y-16">
 
-        {/* Encabezado con Typewriter */}
+        {/* Encabezado con typewriter sin borrar y en bucle */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-athenia-400 mb-4 h-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-athenia-400 mb-4 min-h-[3rem]">
             <Typewriter
               options={{
                 strings: ['Tecnología que impulsa resultados'],
                 autoStart: true,
-                loop: false,
-                delay: 40,
+                loop: true,
+                delay: 45,
+                deleteSpeed: 0,
+                pauseFor: 8000,
               }}
             />
           </h2>
@@ -90,7 +87,7 @@ const Features = () => {
           </p>
         </motion.div>
 
-        {/* Lista de features */}
+        {/* Lista de features con animación y hover */}
         <div className="space-y-12">
           {features.map((feature, index) => (
             <motion.div
@@ -99,9 +96,10 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: feature.delay }}
               viewport={{ once: true }}
-              className="flex items-start gap-5"
+              whileHover={{ scale: 1.03 }}
+              className="flex items-start gap-5 bg-white p-4 rounded-xl shadow-md transition duration-300 hover:shadow-lg hover:bg-athenia-50"
             >
-              <div className="p-4 bg-athenia-50 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+              <div className="p-4 bg-athenia-50 rounded-xl shadow-sm transition hover:scale-110">
                 {svgIcons[index]}
               </div>
               <div>
@@ -116,7 +114,7 @@ const Features = () => {
           ))}
         </div>
 
-        {/* CTA final */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -134,12 +132,7 @@ const Features = () => {
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </a>
         </motion.div>
@@ -149,4 +142,3 @@ const Features = () => {
 };
 
 export default Features;
- 
