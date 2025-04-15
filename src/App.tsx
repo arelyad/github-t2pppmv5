@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -9,6 +9,14 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
+  // ✅ Carga del script del chatbot globalmente
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://elevenlabs.io/convai-widget/index.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
   return (
     <div className="bg-white overflow-x-hidden relative">
       <Navbar />
@@ -22,13 +30,12 @@ function App() {
           <Contact />
         </Suspense>
       </main>
+      <Footer />
 
-      {/* ✅ Asegura que el chatbot quede al frente y fuera del flujo principal */}
-      <div className="chatbot-animate fixed bottom-2 right-2 z-[9999] scale-[0.75]">
+      {/* ✅ Chatbot siempre visible */}
+      <div className="fixed bottom-1.5 right-2 z-[9999] chatbot-animate scale-[0.75]">
         <elevenlabs-convai agent-id="RSdNio7xDV4EO2kveC06" />
       </div>
-
-      <Footer />
     </div>
   );
 }
