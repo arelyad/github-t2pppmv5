@@ -34,7 +34,7 @@ const Services = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 7000);
     return () => clearInterval(interval);
   }, []);
 
@@ -52,10 +52,10 @@ const Services = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={slides[current].video}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, scale: 1.05, filter: 'blur(8px)' }}
+              animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, scale: 0.95, filter: 'blur(6px)' }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
               className="absolute top-0 left-0 w-full h-full z-0"
             >
               <video
@@ -72,10 +72,10 @@ const Services = () => {
 
           <motion.div
             key={slides[current].title}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -40 }}
-            transition={{ duration: 0.8 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 1.0 }}
             className="absolute bottom-6 left-6 right-6 text-left z-10"
           >
             <h3 className="text-white text-xl md:text-2xl font-semibold drop-shadow-md">
