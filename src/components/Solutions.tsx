@@ -6,17 +6,19 @@ import iconoMarketing from '../assets/icono-marketing.jpg';
 
 const services = [
   {
-    title: 'Creamos soluciones que no solo automatizan procesos, sino que los perfeccionan continuamente.',
+    title: 'Inteligencia estratégica para optimizar tus decisiones y resultados.
+La eficiencia de tu empresa, elevada por IA..',
     video: '/video-servicio-1.mp4', // ✅ Ruta corregida
     icon: iconoCRM,
   },
   {
-    title: 'Nuestra IA aprende de tus operaciones diarias, identifica áreas de mejora y aplica optimizaciones que hacen que cada tarea sea más ágil y eficiente.',
+    title: 'Automatización que impulsa tus ventas con precisión.
+Convierte más con procesos inteligentes y escalables.',
     video: '/video-servicio-2.mp4', // ✅ Ruta corregida
     icon: iconoChatbot,
   },
   {
-    title: 'Soluciones Empresariales IA',
+    title: 'Soluciones Empresariales IA, para impulsar tu negocio con herramientas inteligentes que optimizan cada área de forma estratégica.',
     video: '/video-servicio-3.mp4', // ✅ Ruta corregida
     icon: iconoSoluciones,
   },
