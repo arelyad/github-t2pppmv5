@@ -23,7 +23,7 @@ Convierte más con procesos inteligentes y escalables.',
     icon: iconoSoluciones,
   },
   {
-    title: 'Embudo de Ventas Automatizado',
+    title: 'Creamos soluciones que no solo automatizan procesos, sino que los perfeccionan continuamente.',
     video: '/video-servicio-4.mp4', // ✅ Ruta corregida
     icon: iconoMarketing,
   },
