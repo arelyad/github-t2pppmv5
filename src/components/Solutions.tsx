@@ -34,7 +34,7 @@ const Solutions = () => {
     <section className="bg-athenia-50 py-20 px-4">
       <div className="max-w-[1300px] mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-athenia-400 mb-10">
-          ¿Qué puedes hacer con <span className="text-athenia-300">AthenIA</span>?
+          Soluciones empresariales con <span className="text-athenia-300">AthenAI</span>
         </h2>
 
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
