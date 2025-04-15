@@ -6,7 +6,7 @@ import iconoMarketing from '../assets/icono-marketing.jpg';
 
 const services = [
   {
-    title: 'Inteligencia estratégica para optimizar tus decisiones y resultados.
+    title: 'Inteligencia estratégica para optimizar tus decisiones y resultados'.
 La eficiencia de tu empresa, elevada por IA..',
     video: '/video-servicio-1.mp4', // ✅ Ruta corregida
     icon: iconoCRM,
