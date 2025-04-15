@@ -1,32 +1,58 @@
 import React from 'react';
-import { Brain, Shield, BarChart, MessageSquare } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+// Íconos SVG personalizados estilo "AI line"
+const svgIcons = [
+  // Icono 1: Automatización Inteligente
+  (
+    <svg className="w-8 h-8 text-athenia-300" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <path d="M5 3h14a2 2 0 012 2v10a2 2 0 01-2 2h-6l-4 4v-4H5a2 2 0 01-2-2V5a2 2 0 012-2z"/>
+      <circle cx="12" cy="9" r="3"/>
+    </svg>
+  ),
+  // Icono 2: Interacción Eficaz
+  (
+    <svg className="w-8 h-8 text-athenia-300" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="6" />
+      <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+    </svg>
+  ),
+  // Icono 3: Innovación Accesible
+  (
+    <svg className="w-8 h-8 text-athenia-300" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 00-6.32 17.65L5 22l2.35-1.32A10 10 0 1012 2z" />
+      <path d="M12 6v6l4 2" />
+    </svg>
+  ),
+  // Icono 4: Escalabilidad sin Límites
+  (
+    <svg className="w-8 h-8 text-athenia-300" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <path d="M9 18h6m-3 0v3M12 2a7 7 0 00-7 7c0 3.5 2.5 5 3.5 6h7c1-1 3.5-2.5 3.5-6a7 7 0 00-7-7z" />
+    </svg>
+  ),
+];
 
 const Features = () => {
   const features = [
     {
-      icon: Brain,
       title: "Automatización Inteligente",
       description:
         "Simplifica tareas repetitivas y optimiza tus procesos con herramientas diseñadas para hacer más en menos tiempo.",
       delay: 0,
     },
     {
-      icon: Shield,
       title: "Interacción Eficaz",
       description:
         "Mejora la comunicación con tus clientes mediante soluciones que hacen cada experiencia más fluida y personalizada",
       delay: 0.1,
     },
     {
-      icon: BarChart,
       title: "Innovación Accesible",
       description:
         "Tecnología avanzada disponible para cualquier tipo de negocio, sin complicaciones ni grandes inversiones.",
       delay: 0.2,
     },
     {
-      icon: MessageSquare,
       title: "Escalabilidad sin Límites",
       description:
         "Implementa soluciones que crecen contigo, adaptándose a tus necesidades y objetivos a medida que evolucionas.",
@@ -65,7 +91,7 @@ const Features = () => {
               className="flex items-start gap-5"
             >
               <div className="p-4 bg-athenia-50 rounded-xl shadow-sm">
-                <feature.icon className="w-6 h-6 text-athenia-300" />
+                {svgIcons[index]}
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-athenia-400 mb-1">
