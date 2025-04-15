@@ -56,7 +56,7 @@ const Services = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -40 }}
               transition={{ duration: 0.8 }}
-              className="absolute top-0 left-0 w-full h-full"
+              className="absolute top-0 left-0 w-full h-full z-0"
             >
               <video
                 src={slides[current].video}
@@ -66,20 +66,24 @@ const Services = () => {
                 playsInline
                 className="w-full h-full object-cover"
               />
+              {/* ✅ Overlay oscuro encima del video */}
+              <div className="absolute inset-0 bg-black/40" />
             </motion.div>
           </AnimatePresence>
+
+          {/* ✅ Texto encima del overlay con sombra */}
           <motion.div
             key={slides[current].title}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -40 }}
             transition={{ duration: 0.8 }}
-            className="absolute bottom-6 left-6 right-6 text-left bg-athenia-900/50 backdrop-blur-sm p-6 rounded-xl shadow-xl"
+            className="absolute bottom-6 left-6 right-6 text-left z-10"
           >
-            <h3 className="text-white text-xl md:text-2xl font-semibold">
+            <h3 className="text-white text-xl md:text-2xl font-semibold drop-shadow-md">
               {slides[current].title}
             </h3>
-            <p className="text-white/80 mt-2 text-sm md:text-base">
+            <p className="text-white/90 mt-2 text-sm md:text-base drop-shadow">
               {slides[current].description}
             </p>
           </motion.div>
