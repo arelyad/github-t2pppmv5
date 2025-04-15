@@ -49,7 +49,7 @@
 @layer utilities {
   .animate-slide-icons {
     display: flex;
-    animation: slideIcons 20s linear infinite;
+    animation: slideIcons 10s linear infinite;
     will-change: transform;
   }
 
