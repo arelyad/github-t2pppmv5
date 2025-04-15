@@ -38,7 +38,7 @@ const Services = () => {
       setTimeout(() => {
         setCurrent((prev) => (prev + 1) % slides.length);
         setIsTransitioning(false);
-      }, 1200); // Cortina más suave
+      }, 1200);
     }, duration);
   };
 
@@ -75,15 +75,17 @@ const Services = () => {
           Nuestros Servicios
         </motion.h2>
 
-        {/* Subtítulo con typing */}
+        {/* Subtítulo */}
         <motion.p
-          whileHover={{ scale: 1.01, color: '#406683' }}
+          whileHover={{ scale: 1.01 }}
           transition={{ duration: 0.3 }}
           className="text-athenia-300 text-lg mb-10 max-w-xl mx-auto"
         >
           <Typewriter
-            words={['Soluciones de IA que transforman tu negocio de manera simple y efectiva']}
-            loop={true}
+            words={[
+              'Soluciones de IA que transforman tu negocio de manera simple y efectiva',
+            ]}
+            loop={0}
             typeSpeed={40}
             deleteSpeed={0}
             delaySpeed={3000}
@@ -91,8 +93,8 @@ const Services = () => {
         </motion.p>
 
         {/* Slider */}
-        <div className="relative h-[240px] md:h-[320px] lg:h-[360px] rounded-2xl overflow-hidden shadow-xl bg-black transition-all duration-500">
-          {/* Botón Izquierda */}
+        <div className="relative h-[220px] md:h-[280px] lg:h-[320px] rounded-2xl overflow-hidden shadow-xl bg-black transition-all duration-500">
+          {/* Flechas */}
           <motion.button
             onClick={prevSlide}
             className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/20 text-white p-2 rounded-full backdrop-blur-sm shadow-md"
@@ -103,7 +105,6 @@ const Services = () => {
             </svg>
           </motion.button>
 
-          {/* Botón Derecha */}
           <motion.button
             onClick={nextSlide}
             className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/20 text-white p-2 rounded-full backdrop-blur-sm shadow-md"
@@ -114,7 +115,7 @@ const Services = () => {
             </svg>
           </motion.button>
 
-          {/* Cortina de transición */}
+          {/* Cortina animada */}
           {isTransitioning && (
             <motion.div
               initial={{ width: '0%' }}
@@ -125,8 +126,8 @@ const Services = () => {
             />
           )}
 
-          {/* Video Slide */}
-          <div className="absolute top-0 left-0 w-full h-full z-10 transition-all duration-500">
+          {/* Video */}
+          <div className="absolute top-0 left-0 w-full h-full z-10">
             <video
               key={slides[current].video}
               src={slides[current].video}
@@ -139,7 +140,7 @@ const Services = () => {
             <div className="absolute inset-0 bg-black/40" />
           </div>
 
-          {/* Texto del Slide */}
+          {/* Texto */}
           <motion.div
             key={slides[current].title}
             initial={{ opacity: 0, y: 30 }}
@@ -172,7 +173,7 @@ const Services = () => {
           ))}
         </div>
 
-        {/* CTA final */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
