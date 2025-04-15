@@ -29,7 +29,7 @@ const Hero = () => {
       transition={{ duration: 1, ease: 'easeOut' }}
     >
       {/* 🌀 Carrusel horizontal centrado visualmente */}
-      <div className="h-[52px] flex items-center justify-center mb-16">
+      <div className="mt-6 mb-16 flex items-center justify-center h-[52px]">
         <div className="flex gap-16 animate-slide-infinite whitespace-nowrap items-center justify-center">
           {[...items, ...items].map((item, index) => (
             <div key={index} className="flex items-center gap-3 min-w-max">
@@ -41,7 +41,7 @@ const Hero = () => {
       </div>
 
       {/* 📦 Contenido principal */}
-      <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-12 items-center min-h-[480px]">
+      <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-12 items-center min-h-[480px] -mt-6">
         {/* 🎥 Video */}
         <motion.div
           className="md:col-span-5 flex justify-center"
@@ -50,7 +50,7 @@ const Hero = () => {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <div className="rounded-2xl overflow-hidden shadow-subtle w-full max-w-[390px] aspect-[4/3] mt-[-10px]">
+          <div className="rounded-2xl overflow-hidden shadow-subtle w-full max-w-[390px] aspect-[4/3] mt-[-6px]">
             <video
               src="/VideoAthenIA_Hero.mp4"
               autoPlay
