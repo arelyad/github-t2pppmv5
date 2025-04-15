@@ -6,12 +6,12 @@ import iconoMarketing from '../assets/icono-marketing.jpg';
 
 const services = [
   {
-    title: 'CRM con Inteligencia Artificial',
+    title: 'Creamos soluciones que no solo automatizan procesos, sino que los perfeccionan continuamente.',
     video: '/video-servicio-1.mp4', // ✅ Ruta corregida
     icon: iconoCRM,
   },
   {
-    title: 'Chatbots Inteligentes',
+    title: 'Nuestra IA aprende de tus operaciones diarias, identifica áreas de mejora y aplica optimizaciones que hacen que cada tarea sea más ágil y eficiente.',
     video: '/video-servicio-2.mp4', // ✅ Ruta corregida
     icon: iconoChatbot,
   },
