@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+// ✅ IMPORTACIÓN CORRECTA DE ÍCONOS
 import iconoMarketing from '../assets/icono-marketing.jpg';
 import iconoSoluciones from '../assets/icono-soluciones.jpg';
 import iconoChatbot from '../assets/icono-chatbot.jpg';
@@ -14,78 +15,82 @@ const Hero = () => {
     document.body.appendChild(script);
   }, []);
 
-  const items = [
-    { icon: iconoChatbot, text: 'Chatbots que atienden a tus clientes 24/7' },
-    { icon: iconoCRM, text: 'CRM que aprende de cada interacción' },
-    { icon: iconoMarketing, text: 'Marketing Digital con IA' },
-    { icon: iconoSoluciones, text: 'Soluciones con Inteligencia Artificial' },
-  ];
-
   return (
-    <motion.section
-      className="relative bg-white pt-24 pb-28 md:pt-28 md:pb-32 overflow-hidden"
-      initial={{ opacity: 0, y: 50, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 1, ease: 'easeOut' }}
-    >
-      {/* 🌀 Carrusel horizontal centrado visualmente */}
-      <div className="mt-6 mb-16 flex items-center justify-center h-[52px]">
-        <div className="flex gap-16 animate-slide-infinite whitespace-nowrap items-center justify-center">
-          {[...items, ...items].map((item, index) => (
-            <div key={index} className="flex items-center gap-3 min-w-max">
-              <img src={item.icon} alt="icono" className="h-6 w-auto" />
-              <p className="text-sm text-athenia-400">{item.text}</p>
-            </div>
+    <section className="relative bg-white pt-28 pb-32 md:pt-32 md:pb-40">
+      {/* Carrusel de íconos */}
+      <div className="-mt-4 mb-6 overflow-hidden w-full">
+        <div className="animate-slide-icons flex whitespace-nowrap gap-16 items-center justify-center">
+          {[...Array(2)].map((_, i) => (
+            <React.Fragment key={i}>
+              <div className="flex items-center gap-3 min-w-max transform transition-transform duration-300 hover:scale-110">
+                <img src={iconoMarketing} alt="Marketing" className="h-9 w-auto" />
+                <p className="text-sm text-athenia-400">Marketing Digital con IA</p>
+              </div>
+              <div className="flex items-center gap-3 min-w-max transform transition-transform duration-300 hover:scale-110">
+                <img src={iconoSoluciones} alt="Soluciones" className="h-9 w-auto" />
+                <p className="text-sm text-athenia-400">Soluciones con Inteligencia Artificial</p>
+              </div>
+              <div className="flex items-center gap-3 min-w-max transform transition-transform duration-300 hover:scale-110">
+                <img src={iconoChatbot} alt="Chatbots" className="h-9 w-auto" />
+                <p className="text-sm text-athenia-400">Chatbots que atienden a tus clientes 24/7</p>
+              </div>
+              <div className="flex items-center gap-3 min-w-max transform transition-transform duration-300 hover:scale-110">
+                <img src={iconoCRM} alt="CRM" className="h-9 w-auto" />
+                <p className="text-sm text-athenia-400">CRM que aprende de cada interacción</p>
+              </div>
+            </React.Fragment>
           ))}
         </div>
       </div>
 
-      {/* 📦 Contenido principal */}
-      <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-12 items-center min-h-[480px] -mt-6">
-        {/* 🎥 Video */}
+      {/* Contenido principal */}
+      <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-12 items-start mt-10 md:mt-16">
+        {/* Video (✅ AJUSTADO A PUBLIC) */}
         <motion.div
-          className="md:col-span-5 flex justify-center"
+          className="md:col-span-5"
           initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          viewport={{ once: true }}
         >
-          <div className="rounded-2xl overflow-hidden shadow-subtle w-full max-w-[390px] aspect-[4/3] mt-[-6px]">
+          <div className="rounded-2xl overflow-hidden shadow-xl w-full max-w-md aspect-[4/3] mx-auto">
             <video
               src="/VideoAthenIA_Hero.mp4"
               autoPlay
-              muted
               loop
+              muted
               playsInline
               className="w-full h-full object-cover"
             />
           </div>
         </motion.div>
 
-        {/* 🧠 Texto y botones */}
+        {/* Texto principal */}
         <motion.div
-          className="md:col-span-7 flex flex-col justify-center items-center md:items-start animate-fade-up"
+          className="md:col-span-7 flex flex-col justify-center"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
         >
-          <div className="bg-athenia-50 p-5 rounded-xl shadow-sm text-center md:text-left mb-6 max-w-xl">
-            <p className="text-athenia-400 text-lg md:text-xl">
-              En <strong>AthenAI</strong>, llevamos la inteligencia artificial a tu alcance, sin complicaciones.
+          <div className="transition-all duration-300 ease-in-out hover:scale-[1.015] mx-auto md:mx-0">
+            <p className="text-athenia-400 text-lg md:text-xl text-center mb-6 bg-gradient-to-r from-white to-athenia-50 p-4 rounded-md shadow-sm">
+              En <strong>AthenIA</strong>, llevamos la inteligencia artificial a tu alcance, sin complicaciones.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-4 text-sm mb-6 max-w-xl">
-            <div className="border-l-4 border-[#4BA3C7] pl-3">
+          <div className="grid sm:grid-cols-3 gap-4 mb-10 text-sm">
+            <div className="p-3 border-l-4 border-[#4BA3C7] hover:scale-[1.02] transition-transform duration-300">
               <h3 className="font-semibold text-athenia-400 mb-1">Accesibilidad Universal</h3>
               <p className="text-athenia-300/90 text-justify">
                 IA para cualquier empresa, sin importar su tamaño o sector.
               </p>
             </div>
-            <div className="border-l-4 border-[#355D91] pl-3">
+            <div className="p-3 border-l-4 border-[#355D91] hover:scale-[1.02] transition-transform duration-300">
               <h3 className="font-semibold text-athenia-400 mb-1">Simplificación Inteligente</h3>
               <p className="text-athenia-300/90 text-justify">
                 Soluciones prácticas y efectivas que puedes aplicar fácilmente.
               </p>
             </div>
-            <div className="border-l-4 border-[#2B2D42] pl-3">
+            <div className="p-3 border-l-4 border-[#2B2D42] hover:scale-[1.02] transition-transform duration-300">
               <h3 className="font-semibold text-athenia-400 mb-1">Impacto Real</h3>
               <p className="text-athenia-300/90 text-justify">
                 Te guiamos para aprovechar la IA al máximo.
@@ -93,8 +98,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Botones CTA */}
-          <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-2">
+          <div className="flex flex-wrap gap-4 justify-start mt-4">
             <motion.a
               href="#demo"
               whileHover={{ scale: 1.05 }}
@@ -105,7 +109,7 @@ const Hero = () => {
             <motion.a
               href="#mas"
               whileHover={{ scale: 1.05 }}
-              className="px-6 py-2 border border-athenia-400 text-athenia-400 rounded-full text-sm font-medium hover:bg-athenia-50 transition-colors"
+              className="px-6 py-2 bg-white border border-athenia-400 text-athenia-400 rounded-full text-sm font-medium hover:bg-athenia-50 transition-colors"
             >
               Más información
             </motion.a>
@@ -113,11 +117,11 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* 🤖 Chatbot ElevenLabs */}
-      <div className="fixed bottom-1.5 right-2 z-50 chatbot-animate scale-[0.75]">
-        <elevenlabs-convai agent-id="RSdNio7xDV4EO2kveC06" />
+      {/* Chatbot con bounce animación y tamaño reducido */}
+      <div className="fixed bottom-0.5 right-2 z-50 animate-bounce scale-[0.75]">
+        <elevenlabs-convai agent-id="RSdNio7xDV4EO2kveC06"></elevenlabs-convai>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
