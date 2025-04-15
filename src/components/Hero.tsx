@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-// ✅ ÍCONOS
+// Íconos
 import iconoMarketing from '../assets/icono-marketing.jpg';
 import iconoSoluciones from '../assets/icono-soluciones.jpg';
 import iconoChatbot from '../assets/icono-chatbot.jpg';
@@ -16,43 +16,39 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative bg-white pt-28 pb-32 md:pt-32 md:pb-40">
-      {/* ✅ Carrusel de íconos fluido */}
-      <div className="-mt-4 mb-6 overflow-hidden w-full">
-        <div className="flex gap-16 items-center justify-center whitespace-nowrap animate-slide-infinite w-max">
-          {[...Array(2)].map((_, i) => (
-            <React.Fragment key={i}>
-              <div className="flex items-center gap-3 min-w-max transform transition-transform duration-300 hover:scale-110">
-                <img src={iconoMarketing} alt="Marketing" className="h-9 w-auto" />
-                <p className="text-sm text-athenia-400">Marketing Digital con IA</p>
-              </div>
-              <div className="flex items-center gap-3 min-w-max transform transition-transform duration-300 hover:scale-110">
-                <img src={iconoSoluciones} alt="Soluciones" className="h-9 w-auto" />
-                <p className="text-sm text-athenia-400">Soluciones con Inteligencia Artificial</p>
-              </div>
-              <div className="flex items-center gap-3 min-w-max transform transition-transform duration-300 hover:scale-110">
-                <img src={iconoChatbot} alt="Chatbots" className="h-9 w-auto" />
-                <p className="text-sm text-athenia-400">Chatbots que atienden a tus clientes 24/7</p>
-              </div>
-              <div className="flex items-center gap-3 min-w-max transform transition-transform duration-300 hover:scale-110">
-                <img src={iconoCRM} alt="CRM" className="h-9 w-auto" />
-                <p className="text-sm text-athenia-400">CRM que aprende de cada interacción</p>
-              </div>
-            </React.Fragment>
-          ))}
+    <section className="relative bg-white pt-28 pb-32 md:pt-32 md:pb-40 overflow-hidden">
+      {/* Carrusel de íconos IA (más suave y continuo) */}
+      <div className="overflow-hidden w-full mb-10">
+        <div className="flex gap-16 animate-marquee whitespace-nowrap items-center justify-center">
+          <div className="flex items-center gap-3 min-w-max">
+            <img src={iconoChatbot} alt="Chatbots" className="h-6 w-auto" />
+            <p className="text-sm text-athenia-400">Chatbots que atienden a tus clientes 24/7</p>
+          </div>
+          <div className="flex items-center gap-3 min-w-max">
+            <img src={iconoCRM} alt="CRM" className="h-6 w-auto" />
+            <p className="text-sm text-athenia-400">CRM que aprende de cada interacción</p>
+          </div>
+          <div className="flex items-center gap-3 min-w-max">
+            <img src={iconoMarketing} alt="Marketing" className="h-6 w-auto" />
+            <p className="text-sm text-athenia-400">Marketing Digital con IA</p>
+          </div>
+          <div className="flex items-center gap-3 min-w-max">
+            <img src={iconoSoluciones} alt="Soluciones" className="h-6 w-auto" />
+            <p className="text-sm text-athenia-400">Soluciones con Inteligencia Artificial</p>
+          </div>
         </div>
       </div>
 
       {/* Contenido principal */}
-      <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-12 items-start mt-10 md:mt-16">
-        {/* 🎥 Video de fondo */}
+      <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-12 items-start">
+        {/* 🎥 Video principal */}
         <motion.div
           className="md:col-span-5"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
         >
-          <div className="rounded-2xl overflow-hidden shadow-xl w-full max-w-md aspect-[4/3] mx-auto">
+          <div className="rounded-2xl overflow-hidden shadow-xl w-full max-w-[480px] aspect-[4/3] mx-auto">
             <video
               src="/VideoAthenIA_Hero.mp4"
               autoPlay
@@ -64,41 +60,35 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* 🧠 Texto del Hero */}
+        {/* Texto derecho */}
         <motion.div
           className="md:col-span-7 flex flex-col justify-center"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <div className="transition-all duration-300 ease-in-out hover:scale-[1.015] mx-auto md:mx-0">
-            <p className="text-athenia-400 text-lg md:text-xl text-center mb-6 bg-gradient-to-r from-white to-athenia-50 p-4 rounded-md shadow-sm">
-              En <strong>AthenAI</strong>, llevamos la inteligencia artificial a tu alcance, sin complicaciones.
+          <div className="bg-athenia-50 p-5 rounded-xl shadow-sm text-center mb-6">
+            <p className="text-athenia-400 text-lg md:text-xl">
+              En <strong>AthenIA</strong>, llevamos la inteligencia artificial a tu alcance, sin complicaciones.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-4 mb-10 text-sm">
-            <div className="p-3 border-l-4 border-[#4BA3C7] hover:scale-[1.02] transition-transform duration-300">
+          <div className="grid sm:grid-cols-3 gap-4 text-sm">
+            <div className="border-l-4 border-[#4BA3C7] pl-3">
               <h3 className="font-semibold text-athenia-400 mb-1">Accesibilidad Universal</h3>
-              <p className="text-athenia-300/90 text-justify">
-                IA para cualquier empresa, sin importar su tamaño o sector.
-              </p>
+              <p className="text-athenia-300/90 text-justify">IA para cualquier empresa, sin importar su tamaño o sector.</p>
             </div>
-            <div className="p-3 border-l-4 border-[#355D91] hover:scale-[1.02] transition-transform duration-300">
+            <div className="border-l-4 border-[#355D91] pl-3">
               <h3 className="font-semibold text-athenia-400 mb-1">Simplificación Inteligente</h3>
-              <p className="text-athenia-300/90 text-justify">
-                Soluciones prácticas y efectivas que puedes aplicar fácilmente.
-              </p>
+              <p className="text-athenia-300/90 text-justify">Soluciones prácticas y efectivas que puedes aplicar fácilmente.</p>
             </div>
-            <div className="p-3 border-l-4 border-[#2B2D42] hover:scale-[1.02] transition-transform duration-300">
+            <div className="border-l-4 border-[#2B2D42] pl-3">
               <h3 className="font-semibold text-athenia-400 mb-1">Impacto Real</h3>
-              <p className="text-athenia-300/90 text-justify">
-                Te guiamos para aprovechar la IA al máximo.
-              </p>
+              <p className="text-athenia-300/90 text-justify">Te guiamos para aprovechar la IA al máximo.</p>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-4 justify-start mt-4">
+          <div className="flex flex-wrap gap-4 justify-start mt-6">
             <motion.a
               href="#demo"
               whileHover={{ scale: 1.05 }}
@@ -109,7 +99,7 @@ const Hero = () => {
             <motion.a
               href="#mas"
               whileHover={{ scale: 1.05 }}
-              className="px-6 py-2 bg-white border border-athenia-400 text-athenia-400 rounded-full text-sm font-medium hover:bg-athenia-50 transition-colors"
+              className="px-6 py-2 border border-athenia-400 text-athenia-400 rounded-full text-sm font-medium hover:bg-athenia-50 transition-colors"
             >
               Más información
             </motion.a>
@@ -117,7 +107,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Chatbot de ElevenLabs */}
+      {/* Chatbot */}
       <div className="fixed bottom-0.5 right-2 z-50 animate-bounce scale-[0.75]">
         <elevenlabs-convai agent-id="RSdNio7xDV4EO2kveC06"></elevenlabs-convai>
       </div>
