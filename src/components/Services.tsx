@@ -30,13 +30,30 @@ const slides = [
 
 const Services = () => {
   const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1); // 1 para adelante, -1 para atrás
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setDirection(1);
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 7000);
     return () => clearInterval(interval);
   }, []);
+
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 200 : -200,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? -200 : 200,
+      opacity: 0,
+    }),
+  };
 
   return (
     <section className="relative bg-gradient-to-b from-[#e3edf5] to-white py-24 px-4 overflow-hidden">
@@ -49,13 +66,15 @@ const Services = () => {
         </p>
 
         <div className="relative h-[300px] md:h-[380px] lg:h-[420px] rounded-2xl overflow-hidden shadow-xl bg-black">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={slides[current].video}
-              initial={{ opacity: 0, scale: 1.05, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, scale: 0.95, filter: 'blur(6px)' }}
-              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              custom={direction}
+              transition={{ duration: 1, ease: 'easeInOut' }}
               className="absolute top-0 left-0 w-full h-full z-0"
             >
               <video
@@ -72,10 +91,10 @@ const Services = () => {
 
           <motion.div
             key={slides[current].title}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 1.0 }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.8 }}
             className="absolute bottom-6 left-6 right-6 text-left z-10"
           >
             <h3 className="text-white text-xl md:text-2xl font-semibold drop-shadow-md">
