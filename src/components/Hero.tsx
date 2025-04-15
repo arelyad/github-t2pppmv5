@@ -24,7 +24,7 @@ const Hero = () => {
 
   return (
     <motion.section
-      className="relative bg-white pt-28 pb-32 md:pt-32 md:pb-40 overflow-hidden"
+      className="relative bg-white pt-28 pb-20 md:pt-32 md:pb-28 overflow-hidden"
       initial={{ opacity: 0, y: 50, scale: 0.98 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -52,7 +52,7 @@ const Hero = () => {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <div className="rounded-2xl overflow-hidden shadow-xl w-full max-w-[480px] aspect-[4/3] mx-auto">
+          <div className="rounded-2xl overflow-hidden shadow-xl w-full max-w-[420px] aspect-[4/3] mx-auto">
             <video
               src="/VideoAthenIA_Hero.mp4"
               autoPlay
@@ -64,7 +64,7 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* 🧠 Texto alineado al centro */}
+        {/* 🧠 Texto */}
         <motion.div
           className="md:col-span-7 flex flex-col justify-center"
           initial={{ opacity: 0, y: 40 }}
@@ -81,20 +81,26 @@ const Hero = () => {
           <div className="grid sm:grid-cols-3 gap-4 text-sm">
             <div className="border-l-4 border-[#4BA3C7] pl-3">
               <h3 className="font-semibold text-athenia-400 mb-1">Accesibilidad Universal</h3>
-              <p className="text-athenia-300/90 text-justify">IA para cualquier empresa, sin importar su tamaño o sector.</p>
+              <p className="text-athenia-300/90 text-justify">
+                IA para cualquier empresa, sin importar su tamaño o sector.
+              </p>
             </div>
             <div className="border-l-4 border-[#355D91] pl-3">
               <h3 className="font-semibold text-athenia-400 mb-1">Simplificación Inteligente</h3>
-              <p className="text-athenia-300/90 text-justify">Soluciones prácticas y efectivas que puedes aplicar fácilmente.</p>
+              <p className="text-athenia-300/90 text-justify">
+                Soluciones prácticas y efectivas que puedes aplicar fácilmente.
+              </p>
             </div>
             <div className="border-l-4 border-[#2B2D42] pl-3">
               <h3 className="font-semibold text-athenia-400 mb-1">Impacto Real</h3>
-              <p className="text-athenia-300/90 text-justify">Te guiamos para aprovechar la IA al máximo.</p>
+              <p className="text-athenia-300/90 text-justify">
+                Te guiamos para aprovechar la IA al máximo.
+              </p>
             </div>
           </div>
 
           {/* Botones */}
-          <div className="flex flex-wrap gap-4 justify-start mt-6">
+          <div className="flex flex-wrap gap-4 justify-start mt-10">
             <motion.a
               href="#demo"
               whileHover={{ scale: 1.05 }}
@@ -113,7 +119,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* 🧠 Chatbot ElevenLabs */}
+      {/* Chatbot ElevenLabs */}
       <div className="fixed bottom-0.5 right-2 z-50 animate-bounce scale-[0.75]">
         <elevenlabs-convai agent-id="RSdNio7xDV4EO2kveC06"></elevenlabs-convai>
       </div>
@@ -122,4 +128,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
