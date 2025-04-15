@@ -1,4 +1,4 @@
- import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 // ✅ IMPORTACIÓN CORRECTA DE ÍCONOS
@@ -45,7 +45,7 @@ const Hero = () => {
 
       {/* Contenido principal */}
       <div className="max-w-[1300px] mx-auto px-6 grid md:grid-cols-12 gap-12 items-start mt-10 md:mt-16">
-        {/* Video (✅ AJUSTADO A PUBLIC) */}
+        {/* Video */}
         <motion.div
           className="md:col-span-5"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -73,7 +73,7 @@ const Hero = () => {
         >
           <div className="transition-all duration-300 ease-in-out hover:scale-[1.015] mx-auto md:mx-0">
             <p className="text-athenia-400 text-lg md:text-xl text-center mb-6 bg-gradient-to-r from-white to-athenia-50 p-4 rounded-md shadow-sm">
-              En <strong>AthenIA</strong>, llevamos la inteligencia artificial a tu alcance, sin complicaciones.
+              En <strong>AthenAI</strong>, llevamos la inteligencia artificial a tu alcance, sin complicaciones.
             </p>
           </div>
 
@@ -115,11 +115,6 @@ const Hero = () => {
             </motion.a>
           </div>
         </motion.div>
-      </div>
-
-      {/* Chatbot con bounce animación y tamaño reducido */}
-      <div className="fixed bottom-0.5 right-2 z-50 animate-bounce scale-[0.75]">
-        <elevenlabs-convai agent-id="RSdNio7xDV4EO2kveC06"></elevenlabs-convai>
       </div>
     </section>
   );
