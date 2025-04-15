@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion'; // Asegúrate que esto esté instalado
+import { motion } from 'framer-motion'; // Asegúrate que esté instalado
 import iconoCRM from '../assets/icono-crm.jpg';
 import iconoChatbot from '../assets/icono-chatbot.jpg';
 import iconoSoluciones from '../assets/icono-soluciones.jpg';
@@ -30,7 +30,7 @@ const services = [
 
 const Solutions = () => {
   return (
-    <section className="bg-gradient-to-b from-[#E3F2FD] to-white py-20 px-4">
+    <section className="bg-gradient-to-b from-[#e3edf5] to-white py-20 px-4">
       <div className="max-w-[1300px] mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-athenia-400 mb-10">
           Soluciones empresariales con <span className="text-athenia-300">AthenAI</span>
