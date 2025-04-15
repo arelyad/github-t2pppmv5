@@ -28,8 +28,8 @@ const Hero = () => {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 1, ease: 'easeOut' }}
     >
-      {/* 🌀 Carrusel horizontal superior */}
-      <div className="overflow-hidden w-full mb-10">
+      {/* 🌀 Carrusel horizontal centrado verticalmente */}
+      <div className="h-[48px] flex items-center justify-center mb-12">
         <div className="flex gap-16 animate-slide-infinite whitespace-nowrap items-center justify-center">
           {[...items, ...items].map((item, index) => (
             <div key={index} className="flex items-center gap-3 min-w-max">
@@ -50,7 +50,7 @@ const Hero = () => {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <div className="rounded-2xl overflow-hidden shadow-subtle w-full max-w-[360px] aspect-[4/3]">
+          <div className="rounded-2xl overflow-hidden shadow-subtle w-full max-w-[400px] aspect-[4/3]">
             <video
               src="/VideoAthenIA_Hero.mp4"
               autoPlay
@@ -68,7 +68,7 @@ const Hero = () => {
         >
           <div className="bg-athenia-50 p-5 rounded-xl shadow-sm text-center md:text-left mb-6 max-w-xl">
             <p className="text-athenia-400 text-lg md:text-xl">
-              En <strong>AthenIA</strong>, llevamos la inteligencia artificial a tu alcance, sin complicaciones.
+              En <strong>AthenAI</strong>, llevamos la inteligencia artificial a tu alcance, sin complicaciones.
             </p>
           </div>
 
@@ -122,5 +122,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-             
