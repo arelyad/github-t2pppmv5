@@ -39,9 +39,9 @@ const Solutions = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="relative bg-white rounded-2xl shadow-md p-4 flex flex-col items-center hover:shadow-lg transition-shadow duration-300"
+              className="bg-white rounded-2xl shadow-md p-4 flex flex-col items-center hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="relative w-full aspect-video overflow-hidden rounded-md mb-4">
+              <div className="w-full aspect-video overflow-hidden rounded-md mb-4">
                 <video
                   src={service.video}
                   autoPlay
@@ -50,17 +50,9 @@ const Solutions = () => {
                   playsInline
                   className="w-full h-full object-cover"
                 />
-                {/* Overlay oscuro encima del video */}
-                <div className="absolute inset-0 bg-black/40 z-10" />
-                {/* Texto encima del overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-3 z-20">
-                  <h3 className="text-white text-sm text-center drop-shadow-md">
-                    {service.title}
-                  </h3>
-                </div>
               </div>
-
               <img src={service.icon} alt="icono" className="h-10 w-auto mb-3" />
+              <h3 className="text-athenia-400 font-semibold text-sm text-center">{service.title}</h3>
             </div>
           ))}
         </div>
