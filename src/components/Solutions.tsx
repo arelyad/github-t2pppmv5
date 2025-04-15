@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion'; // Asegúrate que esto esté instalado
 import iconoCRM from '../assets/icono-crm.jpg';
 import iconoChatbot from '../assets/icono-chatbot.jpg';
 import iconoSoluciones from '../assets/icono-soluciones.jpg';
@@ -29,7 +30,7 @@ const services = [
 
 const Solutions = () => {
   return (
-    <section className="bg-athenia-50 py-20 px-4">
+    <section className="bg-gradient-to-b from-[#E3F2FD] to-white py-20 px-4">
       <div className="max-w-[1300px] mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-athenia-400 mb-10">
           Soluciones empresariales con <span className="text-athenia-300">AthenAI</span>
@@ -37,8 +38,12 @@ const Solutions = () => {
 
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
               className="bg-white rounded-2xl shadow-md p-4 flex flex-col items-center hover:shadow-lg transition-shadow duration-300"
             >
               <div className="w-full aspect-video overflow-hidden rounded-md mb-4">
@@ -52,8 +57,10 @@ const Solutions = () => {
                 />
               </div>
               <img src={service.icon} alt="icono" className="h-10 w-auto mb-3" />
-              <h3 className="text-athenia-400 font-semibold text-sm text-center">{service.title}</h3>
-            </div>
+              <p className="text-athenia-400 font-medium text-sm text-justify">
+                {service.title}
+              </p>
+            </motion.div>
           ))}
         </div>
       </div>
