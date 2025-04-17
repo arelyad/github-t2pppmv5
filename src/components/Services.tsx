@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 
 const slides = [
@@ -28,17 +28,12 @@ const slides = [
 const Services = () => {
   const [current, setCurrent] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const duration = 8000;
 
   const resetTimeout = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrent((prev) => (prev + 1) % slides.length);
-        setIsTransitioning(false);
-      }, 1200);
+      setCurrent((prev) => (prev + 1) % slides.length);
     }, duration);
   };
 
@@ -47,16 +42,8 @@ const Services = () => {
     return () => clearTimeout(timeoutRef.current!);
   }, [current]);
 
-  const changeSlide = (index: number) => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrent(index);
-      setIsTransitioning(false);
-    }, 1200);
-  };
-
-  const nextSlide = () => changeSlide((current + 1) % slides.length);
-  const prevSlide = () => changeSlide((current - 1 + slides.length) % slides.length);
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
     <section className="relative bg-gradient-to-b from-[#e3edf5] to-white py-20 px-4 overflow-hidden">
@@ -67,7 +54,6 @@ const Services = () => {
         viewport={{ once: true }}
         className="max-w-5xl mx-auto text-center"
       >
-        {/* Título */}
         <motion.h2
           whileHover={{ scale: 1.02, textShadow: '0 0 10px rgba(64,102,131,0.3)' }}
           className="text-3xl md:text-4xl font-bold text-athenia-400 mb-6 transition-all"
@@ -75,16 +61,13 @@ const Services = () => {
           Nuestros Servicios
         </motion.h2>
 
-        {/* Subtítulo */}
         <motion.p
           whileHover={{ scale: 1.01 }}
           transition={{ duration: 0.3 }}
           className="text-athenia-300 text-lg mb-10 max-w-xl mx-auto"
         >
           <Typewriter
-            words={[
-              'Soluciones de IA que transforman tu negocio de manera simple y efectiva',
-            ]}
+            words={['Soluciones de IA que transforman tu negocio de manera simple y efectiva']}
             loop={0}
             typeSpeed={40}
             deleteSpeed={0}
@@ -94,10 +77,9 @@ const Services = () => {
 
         {/* Slider */}
         <div className="relative h-[220px] md:h-[280px] lg:h-[320px] rounded-2xl overflow-hidden shadow-xl bg-black transition-all duration-500">
-          {/* Flechas */}
           <motion.button
             onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/20 text-white p-2 rounded-full backdrop-blur-sm shadow-md"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/20 text-white p-2 rounded-full backdrop-blur-sm shadow-md md:top-1/2 bottom-4 md:bottom-auto"
             whileHover={{ scale: 1.1 }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,7 +89,7 @@ const Services = () => {
 
           <motion.button
             onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/20 text-white p-2 rounded-full backdrop-blur-sm shadow-md"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/20 text-white p-2 rounded-full backdrop-blur-sm shadow-md md:top-1/2 bottom-4 md:bottom-auto"
             whileHover={{ scale: 1.1 }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,32 +97,27 @@ const Services = () => {
             </svg>
           </motion.button>
 
-          {/* Cortina animada */}
-          {isTransitioning && (
+          <AnimatePresence mode="wait">
             <motion.div
-              initial={{ width: '0%' }}
-              animate={{ width: '100%' }}
-              exit={{ width: '0%' }}
-              transition={{ duration: 1.2, ease: 'easeInOut' }}
-              className="absolute top-0 left-0 h-full bg-athenia-400 z-30"
-            />
-          )}
-
-          {/* Video */}
-          <div className="absolute top-0 left-0 w-full h-full z-10">
-            <video
               key={slides[current].video}
-              src={slides[current].video}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40" />
-          </div>
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.03 }}
+              transition={{ duration: 0.8, ease: 'easeInOut' }}
+              className="absolute top-0 left-0 w-full h-full z-10"
+            >
+              <video
+                src={slides[current].video}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40" />
+            </motion.div>
+          </AnimatePresence>
 
-          {/* Texto */}
           <motion.div
             key={slides[current].title}
             initial={{ opacity: 0, y: 30 }}
@@ -157,7 +134,6 @@ const Services = () => {
           </motion.div>
         </div>
 
-        {/* Progreso */}
         <div className="flex justify-center gap-3 mt-6">
           {slides.map((_, i) => (
             <div key={i} className="relative w-16 h-1 bg-athenia-100 overflow-hidden rounded-full">
@@ -173,7 +149,6 @@ const Services = () => {
           ))}
         </div>
 
-        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -199,3 +174,5 @@ const Services = () => {
 };
 
 export default Services;
+
+ 
